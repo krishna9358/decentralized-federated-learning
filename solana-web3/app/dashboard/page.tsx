@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useWallet } from '@solana/wallet-adapter-react';
 import axios from 'axios';
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 dotenv.config();
 
 export default function Dashboard() {
@@ -53,15 +53,15 @@ export default function Dashboard() {
         url: 'https://api.pinata.cloud/pinning/pinFileToIPFS',
         data: fileData,
         headers: {
-          'Authorization' : `Bearer ${process.env.pinata_jwt}`,
+          // 'Authorization' : `Bearer ${process.env.NEXT_PUBLIC_PINATA_JWT}`,
+          pinata_api_key : process.env.NEXT_PUBLIC_PINATA_API_KEY,
+          pinata_secret_api_key : process.env.NEXT_PUBLIC_PINATA_SECRET_KEY,
           'Content-Type': 'multipart/form-data',
         },
         
       });
-      console.log('Pinata API Key:', typeof process.env.pinata_api_key);
-      console.log('Pinata Secret API Key:', typeof process.env.pinata_secret_api_key);
 
-
+      
       const fileUrl = `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`;
       setCid(fileUrl);
     } catch (err) {
