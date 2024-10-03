@@ -53,13 +53,13 @@ export default function Dashboard() {
         url: 'https://api.pinata.cloud/pinning/pinFileToIPFS',
         data: fileData,
         headers: {
-          'Authorization' : `Bearer ${process.env.pinata_jwt}`,
+          'Authorization' : `Bearer ${process.env.NEXT_PUBLIC_PINATA_JWT}`,
           'Content-Type': 'multipart/form-data',
         },
         
       });
-      console.log('Pinata API Key:', typeof process.env.pinata_api_key);
-      console.log('Pinata Secret API Key:', typeof process.env.pinata_secret_api_key);
+      // console.log('Pinata API Key:', typeof process.env.NEXT_PUBLIC_PINATA_API_KEY);
+      // console.log('Pinata Secret API Key:', typeof process.env.NEXT_PUBLIC_PINATA_API_KEY);
 
 
       const fileUrl = `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`;
