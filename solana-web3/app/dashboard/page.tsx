@@ -53,7 +53,7 @@ export default function Dashboard() {
         url: 'https://api.pinata.cloud/pinning/pinFileToIPFS',
         data: fileData,
         headers: {
-          'Authorization' : `Bearer ${process.env.NEXT_PUBLIC_PINATA_JWT}`,
+          'Authorization' : `Bearer ${process.env.PINATA_JWT}`,
           'Content-Type': 'multipart/form-data',
         },
         
